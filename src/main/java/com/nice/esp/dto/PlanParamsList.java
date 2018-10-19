@@ -7,15 +7,16 @@ import java.util.List;
 /**
  * Created on 10/18/18.
  * Author: filmon
- * Apple Inc.
+ * Nice Systems Ltd.
  */
 
 @Getter
-public class ParamDto {
+public class PlanParamsList
+{
     private Type type;
-    private List<PlanParamEntry> entries;
+    private List<PlanParam> entries;
 
-    public ParamDto(Type type, List<PlanParamEntry> entries) {
+    public PlanParamsList(Type type, List<PlanParam> entries) {
         this.type = type;
         this.entries = entries;
     }
@@ -25,7 +26,7 @@ public class ParamDto {
         return type;
     }
 
-    public List<PlanParamEntry> getEntries() {
+    public List<PlanParam> getEntries() {
         return entries;
     }
 

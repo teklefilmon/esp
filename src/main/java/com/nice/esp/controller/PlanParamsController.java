@@ -2,7 +2,7 @@ package com.nice.esp.controller;
 
 import com.nice.esp.domain.DailyForecastStat;
 import com.nice.esp.domain.Interval;
-import com.nice.esp.dto.PlanParamsDto;
+import com.nice.esp.dto.PlanParamsResponse;
 import com.nice.esp.service.ParamsService;
 import com.nice.esp.service.PlanService;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ import java.util.Objects;
 /**
  * Created on 10/18/18.
  * Author: filmon
- * Apple Inc.
+ * Nice Systems Ltd.
  */
 
 @RestController
@@ -33,7 +33,7 @@ public class PlanParamsController {
     }
 
     @GetMapping("/params")
-    public ResponseEntity<PlanParamsDto> getParameters(@RequestParam("interval") Interval interval) {
+    public ResponseEntity<PlanParamsResponse> getParameters(@RequestParam("interval") Interval interval) {
 
         List<DailyForecastStat> dailyForecastStatsList = planService.getDailyForecastStats(LocalDate.now(), LocalDate.now().plusYears(5));
 

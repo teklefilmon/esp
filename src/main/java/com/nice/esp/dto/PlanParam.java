@@ -3,15 +3,16 @@ package com.nice.esp.dto;
 /**
  * Created on 10/18/18.
  * Author: filmon
- * Apple Inc.
+ * Nice Systems Ltd.
  */
 
-public class PlanParamEntry {
+public class PlanParam
+{
 
     private String date;
     private String value;
 
-    public PlanParamEntry(String date, String value) {
+    public PlanParam(String date, String value) {
         this.date = date;
         this.value = value;
     }

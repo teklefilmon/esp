@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Created on 10/18/18.
  * Author: filmon
- * Apple Inc.
+ * Nice Systems Ltd.
  */
 
 

@@ -1,7 +1,7 @@
 package com.nice.esp.service.calculations;
 
 import com.nice.esp.domain.DailyForecastStat;
-import com.nice.esp.dto.PlanParamEntry;
+import com.nice.esp.dto.PlanParam;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -19,16 +19,16 @@ import static java.time.temporal.TemporalAdjusters.previousOrSame;
 /**
  * Created on 10/18/18.
  * Author: filmon
- * Apple Inc.
+ * Nice Systems Ltd.
  */
 
 public interface WfmCalculations {
 
-    static List<PlanParamEntry> calculateParamsDaily(Stream<DailyForecastStat> data, Function<DailyForecastStat, PlanParamEntry> function) {
+    static List<PlanParam> calculateParamsDaily(Stream<DailyForecastStat> data, Function<DailyForecastStat, PlanParam> function) {
         return data.parallel().map(function).collect(Collectors.toList());
     }
 
-    static List<PlanParamEntry> calculateParamsMonthly(Stream<DailyForecastStat> data, Function<List<DailyForecastStat>, PlanParamEntry> function) {
+    static List<PlanParam> calculateParamsMonthly(Stream<DailyForecastStat> data, Function<List<DailyForecastStat>, PlanParam> function) {
         Map<LocalDate, List<DailyForecastStat>> groupsByMonth =
                 data.parallel()
                         .collect(Collectors.groupingBy(stat -> stat.getDate().with(firstDayOfNextMonth())));
@@ -37,11 +37,12 @@ public interface WfmCalculations {
                 .map(function).collect(Collectors.toList());
     }
 
-    static List<PlanParamEntry> calculateParamsWeekly(Stream<DailyForecastStat> data, Function<List<DailyForecastStat>, PlanParamEntry> function, DayOfWeek dayOfWeek) {
+    static List<PlanParam> calculateParamsWeekly(Stream<DailyForecastStat> data, Function<List<DailyForecastStat>, PlanParam> function, DayOfWeek dayOfWeek) {
         Map<LocalDate, List<DailyForecastStat>> groupsByWeek =
                 data.parallel()
                         .collect(Collectors.groupingBy(stat -> stat.getDate().with(previousOrSame(dayOfWeek))));
-        return new TreeMap<>(groupsByWeek).values().parallelStream().map(function).collect(Collectors.toList());
+        return new TreeMap<>(groupsByWeek).values().parallelStream()
+                .map(function).collect(Collectors.toList());
     }
 
     static String getWeeklyOrMonthlyInterval(List<DailyForecastStat> dailyStatList, DateTimeFormatter formatter) {
