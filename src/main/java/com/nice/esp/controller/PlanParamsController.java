@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created on 10/18/18.
@@ -42,6 +43,8 @@ public class PlanParamsController {
         if (Interval.MONTH.equals(interval)) {
             return ResponseEntity.ok(paramsService.calculateMonthlyParams(dailyForecastStatsList));
         }
-        return ResponseEntity.ok(paramsService.calculateWeeklyParams(dailyForecastStatsList, DayOfWeek.WEDNESDAY));
+        if (Objects.isNull(interval))
+            return ResponseEntity.ok(paramsService.calculateWeeklyParams(dailyForecastStatsList, DayOfWeek.WEDNESDAY));
+        throw new RuntimeException("Invalid interval");
     }
 }

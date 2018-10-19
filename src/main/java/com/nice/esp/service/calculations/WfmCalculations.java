@@ -1,4 +1,4 @@
-package com.nice.esp.tasks;
+package com.nice.esp.service.calculations;
 
 import com.nice.esp.domain.DailyForecastStat;
 import com.nice.esp.dto.PlanParamEntry;

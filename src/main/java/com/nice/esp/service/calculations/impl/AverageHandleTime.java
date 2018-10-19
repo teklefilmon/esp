@@ -1,8 +1,8 @@
-package com.nice.esp.tasks.impl;
+package com.nice.esp.service.calculations.impl;
 
 import com.nice.esp.domain.DailyForecastStat;
 import com.nice.esp.dto.PlanParamEntry;
-import com.nice.esp.tasks.WfmCalculations;
+import com.nice.esp.service.calculations.WfmCalculations;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

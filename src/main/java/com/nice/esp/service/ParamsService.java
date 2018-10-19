@@ -4,14 +4,14 @@ import com.nice.esp.domain.DailyForecastStat;
 import com.nice.esp.dto.ParamDto;
 import com.nice.esp.dto.PlanParamEntry;
 import com.nice.esp.dto.PlanParamsDto;
-import com.nice.esp.tasks.impl.AverageHandleTime;
-import com.nice.esp.tasks.impl.ContactsReceived;
+import com.nice.esp.service.calculations.impl.AverageHandleTime;
+import com.nice.esp.service.calculations.impl.ContactsReceived;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
 import java.util.List;
 
-import static com.nice.esp.tasks.WfmCalculations.*;
+import static com.nice.esp.service.calculations.WfmCalculations.*;
 
 /**
  * Created on 10/18/18.
