@@ -4,8 +4,8 @@ import com.nice.esp.domain.DailyForecastStat;
 import com.nice.esp.dto.PlanParamsList;
 import com.nice.esp.dto.PlanParam;
 import com.nice.esp.dto.PlanParamsResponse;
-import com.nice.esp.service.calculations.impl.AverageHandleTime;
-import com.nice.esp.service.calculations.impl.ContactsReceived;
+import com.nice.esp.service.calculations.functions.AverageHandleTime;
+import com.nice.esp.service.calculations.functions.ContactsReceived;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
